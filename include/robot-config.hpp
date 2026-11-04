@@ -17,6 +17,8 @@ extern lemlib::Drivetrain drivetrain;
 extern pros::Imu imu;
 extern pros::Rotation forward_rotation_sensor;
 extern lemlib::TrackingWheel forward_tracking_wheel;
+extern pros::Rotation sideways_rotation_sensor;
+extern lemlib::TrackingWheel sideways_tracking_wheel;
 extern lemlib::OdomSensors sensors;
 
 
