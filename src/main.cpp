@@ -7,8 +7,8 @@
  * "I was pressed!" and nothing.
  */
 
- pros::MotorGroup LeftMotors({1,2,3}, pros::MotorGearset:blue);
- pros::MotorGroup RightMotors({1,2,3},pros::MotorGearset:blue);
+ pros::MotorGroup LeftMotors({1,2,3}, pros::MotorGearset::blue);
+ pros::MotorGroup RightMotors({1,2,3},pros::MotorGearset::blue);
 void on_center_button() {
 	static bool pressed = false;
 	pressed = !pressed;
