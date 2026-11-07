@@ -73,5 +73,30 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	
+	while (true) {
+		// input curve for throttle input during driver control
+lemlib::ExpoDriveCurve throttle_curve(3, // joystick deadband out of 127
+                                     10, // minimum output where drivetrain will move out of 127
+                                     1.019 // expo curve gain
+);
+
+// input curve for steer input during driver control
+lemlib::ExpoDriveCurve steer_curve(3, // joystick deadband out of 127
+                                  10, // minimum output where drivetrain will move out of 127
+                                  1.019 // expo curve gain
+);
+
+// create the chassis
+lemlib::Chassis chassis(drivetrain,lateral_controller,angular_controller,sensors,&throttle_curve, &steer_curve);
+       
+		// get left y and right x positions
+        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+        // move the robot
+        chassis.arcade(leftY, rightX, false, 0.75);
+        // delay to save resources
+        pros::delay(25);
+    }
+
 }
