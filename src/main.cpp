@@ -58,9 +58,10 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
+    ASSET(autonpath_txt);
 	chassis.setPose(0, 0, 0);
     // turn to face heading 90 with a very long timeout
-    chassis.turnToHeading(90, 100000);
+    chassis.follow(autonpath_txt, 15, 2000);
     // move 48" forwards
     chassis.moveToPoint(0, 48, 10000);
 }
